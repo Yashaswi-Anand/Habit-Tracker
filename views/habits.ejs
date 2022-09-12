@@ -1,0 +1,37 @@
+
+<form action="/habit/create" method="POST">
+    <input type="text" name="habitInput" placeholder="Add habit...">
+    <button>Add</button>
+</form>
+
+    <ul>
+        <% for(let task of habits) { %>
+            <li>
+                <h3><%= task.habit %></h3>
+
+                <a href="/habit/updateStatus/<%= task._id %>"> 
+                    <h3><%= task.status %></h3>
+                </a>
+
+                <a href="/habit/delete/<%= task._id %>"> 
+                    <i class="fas fa-window-close"></i>
+                </a>
+            
+            </li>
+        <% } %>
+    </ul>
+
+    <!-- <form action="/habit/updateStatus" method="post">
+        <div class="dropdown-container">
+            
+            <select name="category" id="dropdown-category">
+                <option value="na">Select category</option>
+                <option value="personal">Personal</option>
+                <option value="work">Work</option>
+                <option value="school">School</option>
+                <option value="cleaning">Cleaning</option>
+                <option value="other">Other</option>
+            </select>
+        </div>
+        <button type="submit">submit</button>
+    </form> -->
