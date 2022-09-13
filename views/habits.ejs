@@ -1,37 +1,30 @@
-
-<form action="/habit/create" method="POST">
-    <input type="text" name="habitInput" placeholder="Add habit...">
-    <button>Add</button>
+<form action="/create" method="POST">
+    <div class="d-flex justify-content-around w-50" style="margin-left: 25%;">
+        <input type="text" name="habitInput" placeholder=" Add your habit...">
+        <button class="btn-hover" ><i class="fa-solid fa-plus"></i> &ensp; Add</button>
+    </div>
 </form>
 
-    <ul>
+<div class="center mt-2" style="margin-left: 20%;">
+    <div class="container center">
         <% for(let task of habits) { %>
-            <li>
-                <h3><%= task.habit %></h3>
-
-                <a href="/habit/updateStatus/<%= task._id %>"> 
-                    <h3><%= task.status %></h3>
-                </a>
-
-                <a href="/habit/delete/<%= task._id %>"> 
-                    <i class="fas fa-window-close"></i>
-                </a>
-            
-            </li>
+            <a href="/report" class="removeUnderline">
+                <div id="<%= task.status[0] %>" class="row p-1 list-design w-75">
+                    <div class="col-4">
+                        <a><h3 class="text-white"> <%= task.habit %></h3> </a>
+                    </div>
+                    <div class="col-4">
+                        <a href="/updateStatus/<%= task._id %>" class="removeUnderline"> 
+                            <h5  class="mt-2 p-1 text-white"><%= task.status[0] %></h5>
+                        </a>
+                    </div>
+                    <div class="col-4">
+                        <a href="/delete/<%= task._id %>" class="removeUnderline"> 
+                            <i class="fa-solid fa-trash-can text-white mt-2" style="font-size: 1.5rem;"></i>
+                        </a>
+                    </div>
+                </div>
+            </a>
         <% } %>
-    </ul>
-
-    <!-- <form action="/habit/updateStatus" method="post">
-        <div class="dropdown-container">
-            
-            <select name="category" id="dropdown-category">
-                <option value="na">Select category</option>
-                <option value="personal">Personal</option>
-                <option value="work">Work</option>
-                <option value="school">School</option>
-                <option value="cleaning">Cleaning</option>
-                <option value="other">Other</option>
-            </select>
-        </div>
-        <button type="submit">submit</button>
-    </form> -->
+    </div>
+</div>

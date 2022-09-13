@@ -4,8 +4,19 @@ const Habit = require("../models/Habits")
 exports.createHabit = async(req,res) =>{
     try {
         console.log(req.body);
+        const dateArray = [];
+        const status = [];
+        for(let i=0;i<7;i++){
+            const curDate = new Date();
+           const date = new Date(curDate.setDate(curDate.getDate() - i));
+           const dateInString = date.toString();
+           dateArray[i] = dateInString.substring(4,15);
+           status[i] = 'NONE'
+        }
         Habit.create({
-            "habit": req.body.habitInput
+            "habit": req.body.habitInput,
+            "date": dateArray,
+            "status":status,
         }, function(err, newHabit){
             if(err){
                 console.log('Error in creating a habits');
@@ -15,24 +26,7 @@ exports.createHabit = async(req,res) =>{
             
         });
         return res.redirect('back');
-        //const habit = await Habit.findOne({'habit': req.body.habit});
-
-        // const newHabit = await Habit.create(req.body);
-
-        // if(!newHabit){
-        //     console.log('Error in fetching tasks from db');
-        //     return;
-        // }
-        // return res.redirect('back');
-
-        // if(habit){
-        //     return res.status(400).json({massage: "Already present this habit."});
-        // }
-        // const newHabit = await Habit.create(req.body);
-        // if(!newHabit){
-        //     return res.status(400).json({massage: "Error creating habit"});
-        // }
-        // return res.status(200).json({massage: "Successfully created habit."});
+        
     } catch (error) {
         return res.status(500).json({"Error": error, massage: "Internal server error..."});
     }
@@ -85,16 +79,55 @@ exports.updateStatus = async(req,res) =>{
     const id = req.params.id;
     console.log(id);
      const habit = await Habit.findById(id);
-     console.log(habit.status);
+     console.log(habit);
     var newStatus = '';
-    if(habit.status === 'NONE'){
+    if(habit.status[0] === 'NONE'){
         newStatus = "DONE"
-    }else if(habit.status === 'DONE'){
-        newStatus = "NOT DONE"
+    }else if(habit.status[0] === 'DONE'){
+        newStatus = "NOT-DONE"
     }else{
         newStatus = "NONE"
     }
-    habit.status = newStatus;
+    habit.status[0] = newStatus;
+    habit.save();
+    return res.redirect('back');
+}
+// res.render("weekly_report",{ layout: './Layout/sidebar',title:"Report",});
+
+exports.weeklyReport = async(req,res) =>{
+    const id = req.query.id;
+    console.log(id);
+    try {
+        const habits = await Habit.find();
+          
+        return res.render('weekly_report',{
+            layout: './Layout/sidebar',
+            title:"Report",
+            habits: habits,
+        });
+    } catch (error) {
+        console.log(err);
+    }
+
+}
+
+exports.reportUpdate  = async(req,res) => {
+    const id = req.params.id;
+    const index = req.params.index;
+
+    const habit = await Habit.findById(id);
+    console.log(habit);
+    const myStatus = habit.status[index];
+    console.log(myStatus);
+    var newStatus = '';
+    if(myStatus === 'NONE'){
+        newStatus = "DONE"
+    }else if(myStatus === 'DONE'){
+        newStatus = "NOT-DONE"
+    }else{
+        newStatus = "NONE"
+    }
+    habit.status[index] = newStatus;
     habit.save();
     return res.redirect('back');
 }

@@ -5,10 +5,12 @@ const habitSchema = mongoose.Schema({
         type: String,
         required: true,
     },
-    status:{
+    date:[{
         type:String,
-        default: "NONE"
-    }
+    }],
+    status:[{
+        type:String,
+    }]
 })
 
 const Habit = mongoose.model('Habit', habitSchema);
