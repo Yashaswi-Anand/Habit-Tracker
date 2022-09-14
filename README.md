@@ -14,9 +14,10 @@ This application is a just a tool that track your daily habits, to build good ha
 - Able to change any of the prevoius day status.
 - one default user and attach habits to the user.
 
-## Routes
-- /habits
-- /report
+## Routes and how to start
+- Go to link: [Project Link](https://habitt-tracker.herokuapp.com/)
+- Add habits and view habits:  /habits
+- view all past 7 days habits: /report
 
 # Tech
 - Nodejs
