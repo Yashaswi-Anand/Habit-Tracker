@@ -17,7 +17,15 @@
                     </div>
                     <div class="col-4">
                         <a href="/updateStatus/<%= task._id %>" class="removeUnderline"> 
-                            <h5  class="mt-2 p-1 text-white"><%= task.status[0] %></h5>
+                            <h5  class="mt-2 p-1 text-white">
+                                <% if(task.status[0] == "DONE"){ %>
+                                    <i  style="font-size: 1.5rem;" class="fa-solid fa-circle-check"></i>
+                                <%  }else if(task.status[0] == "NOT-DONE"){ %>
+                                    <i style="font-size: 1.5rem;" class="fa-solid fa-circle-xmark"></i>
+                                <%  }else{ %>
+                                    <i style="font-size: 1.5rem;" class="fa-solid fa-circle-minus"></i>
+                                <% } %>
+                            </h5>
                         </a>
                     </div>
                     <div class="col-4">

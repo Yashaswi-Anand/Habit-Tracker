@@ -19,7 +19,15 @@
                 <tr>
                     <th scope="row" class="text-warning bg-dark"><%= task.habit %></th>
                     <% for(let i=0; i< task.status.length; i++) { %>
-                        <td id="<%= task.status[i] %>"> <a href="/reportUpdate/<%= task._id %>/<%= i %>/<%= task.status[i] %>" class="removeUnderline text-white"> <%= task.status[i] %> </a></td>
+                        <td id="<%= task.status[i] %>"> <a href="/reportUpdate/<%= task._id %>/<%= i %>/<%= task.status[i] %>" class="removeUnderline text-white"> 
+                            <% if(task.status[i] == "DONE"){ %>
+                                <i  style="font-size: 1.5rem;" class="fa-solid fa-circle-check"></i>
+                            <%  }else if(task.status[i] == "NOT-DONE"){ %>
+                                <i style="font-size: 1.5rem;" class="fa-solid fa-circle-xmark"></i>
+                            <%  }else{ %>
+                                <i style="font-size: 1.5rem;" class="fa-solid fa-circle-minus"></i>
+                            <% } %>
+                        </a></td>
                     <% } %>
                 </tr>
             <% } %>

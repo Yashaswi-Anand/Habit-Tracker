@@ -23,3 +23,10 @@ This application is a just a tool that track your daily habits, to build good ha
 - Expressjs
 - Ejs
 - MongoDB
+
+## Deployment
+- Heroku (nodejs server)
+- MongoDB Atlas (for database)
+
+## Project link
+[https://habitt-tracker.herokuapp.com/](https://habitt-tracker.herokuapp.com/)
