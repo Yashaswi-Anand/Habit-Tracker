@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
-
-mongoose.connect('mongodb://localhost/HabitTracker',{
+// process.env.MONGO_URL ||
+mongoose.connect(process.env.MONGO_URL || 'mongodb://localhost/HabitTracker',{
     useNewUrlParser: true,
     useUnifiedTopology: true
 });

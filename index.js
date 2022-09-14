@@ -1,5 +1,6 @@
 const express = require('express');
-const port = 5000
+require('dotenv').config();
+const port = process.env.PORT || 5000
 const app = express();
 const cookieParser = require('cookie-parser');
 const db = require('./config/mongoose');
@@ -7,8 +8,14 @@ const bodyParser = require('body-parser');
 const habitRoute = require('./routes/habitRoutes');
 const userRoute = require('./routes/userRoutes');
 const expressLayouts = require('express-ejs-layouts');
+var cors = require('cors')
 
 
+//cors
+var corsOptions = {
+    origin: '*',
+  }
+app.use(cors(corsOptions));
 
 // add static files
 app.use(express.static('assets'));

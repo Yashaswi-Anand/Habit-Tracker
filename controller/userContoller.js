@@ -14,6 +14,7 @@ exports.createUser = async(req,res) =>{
             console.log("new user:",newUser);
         }
         return res.redirect('/');
+        // return res.status(200).json({message: "Added"})
     } catch (error) {
         console.log(error);
     }
