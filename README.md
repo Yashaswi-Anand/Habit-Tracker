@@ -22,7 +22,7 @@ This application is a just a tool that track your daily habits, to build good ha
 # Tech
 - Nodejs
 - Expressjs
-- Ejs
+- EJS
 - MongoDB
 
 ## Deployment
