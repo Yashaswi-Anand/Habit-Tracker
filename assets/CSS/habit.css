@@ -15,11 +15,6 @@ header, footer {
     padding: 20px;
 }
 
-main{
-    /* background-color: cornsilk; */
-    padding: 20px;
-}
-
 .layout-sidebar{
     display: grid;
     gap: 10px;
@@ -56,6 +51,20 @@ input{
     color: aliceblue;
     font-size: medium;
     border: solid 2px  rgb(73, 110, 143);;
+}
+
+.login-btn{
+    background-color: rgb(54, 90, 122);
+    color: white;
+    border: solid 2px white;
+    border-radius: 10px;
+}
+
+.login-btn:hover{
+    background-color: whitesmoke;
+    color: rgb(54, 90, 122);
+    border: solid 2px rgb(54, 90, 122);
+    border-radius: 10px;
 }
 
 .btn-hover{

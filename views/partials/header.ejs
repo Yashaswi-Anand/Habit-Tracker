@@ -1,13 +1,16 @@
 <header> 
     <div class="container">
         <div class="row">
-            <div class="col-3 center text-white bg-success p-2 rounded border border-white">
+            <div class="col-3 center text-light bg-success p-2 rounded border border-light">
                 <h3>Habit Tracker</h3></div>
-            <div class="col-5"></div>
+            <div class="col-5 center text-warning p-2"> <h4>Hey <%= user.userName %>!</h4></div>
             <div class="col-4">
                 <div class="d-flex justify-content-evenly">
-                    <a href="/report"  class="removeUnderline mt-2 text-white">
+                    <a href="/report"  class="removeUnderline mt-2 text-light">
                         <h3>Report</h3>
+                    </a> 
+                    <a href="/logoutUser"  class="removeUnderline mt-2 text-light">
+                        <h3>Logout</h3>
                     </a> 
                 </div>
             </div>

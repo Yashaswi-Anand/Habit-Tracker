@@ -1,4 +1,5 @@
-const Habit = require("../models/Habits")
+const Habit = require("../models/Habits");
+const User = require("../models/User");
 
 // create a habit
 exports.createHabit = async(req,res) =>{
@@ -35,13 +36,19 @@ exports.createHabit = async(req,res) =>{
 // show all habits
 exports.getAllHabits = async(req,res) =>{
     try {
-        const habits = await Habit.find();
-          
-        return res.render('habits',{
-            title:"Habits data",
-            habits: habits,
-        });
         
+        
+        if(req.cookies.user_name){
+            const habits = await Habit.find();
+            const user = await User.findById(req.cookies.user_name);
+            return res.render('habits',{
+                title:"Habits",
+                habits: habits,
+                user:user,
+            });
+        }else{
+            return res.redirect('/');
+        }
         
         // Habit.find({}, function(err, habits){
         //     if(err){
@@ -98,13 +105,18 @@ exports.weeklyReport = async(req,res) =>{
     const id = req.query.id;
     console.log(id);
     try {
-        const habits = await Habit.find();
-          
-        return res.render('weekly_report',{
-            layout: './Layout/sidebar',
-            title:"Report",
-            habits: habits,
-        });
+        if(req.cookies.user_name){
+            const habits = await Habit.find();
+            const user = await User.findById(req.cookies.user_name);
+            return res.render('weekly_report',{
+                layout: './Layout/sidebar',
+                title:"Report",
+                habits: habits,
+                user:user,
+            });
+        }else{
+            return res.redirect('/')
+        }
     } catch (error) {
         console.log(err);
     }
