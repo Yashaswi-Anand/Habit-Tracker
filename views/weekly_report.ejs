@@ -1,5 +1,5 @@
 <div>
-    <h1 class="text-success center"><i>Weekly Report</i></h1>
+    <h1 class="text-success center mt-2"><i>Weekly Report</i></h1>
 
     <table class="table mt-4">
         <% for(let h=habits.length-1;h>=0; h--) { %>
@@ -8,7 +8,7 @@
                     <tr>
                     <th scope="col" class="bg-warning text-danger">D/H</th>
                         <% for(let i of habits[0].date) { %>
-                            <th class="bg-white"> <h5 class="text-danger "><%= i %></h5></th>
+                            <th class="bg-light"> <h5 class="text-danger "><%= i %></h5></th>
                         <% } %>
                     </tr>
                 </thead>
