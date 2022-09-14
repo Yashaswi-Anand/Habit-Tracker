@@ -14,7 +14,7 @@ var cors = require('cors')
 //cors
 var corsOptions = {
     origin: '*',
-  }
+}
 app.use(cors(corsOptions));
 
 // add static files
