@@ -25,6 +25,14 @@ This application is a just a tool that track your daily habits, to build good ha
 - EJS
 - MongoDB
 
+## Project Demo
+# Login & Logout Page
+![image](https://github.com/Yashaswi-Anand/Habit-Tracker/blob/master/screenshots/login.png)
+# Habits Page
+![image](https://github.com/Yashaswi-Anand/Habit-Tracker/blob/master/screenshots/habits.png)
+# Weekly Report Page
+![image](https://github.com/Yashaswi-Anand/Habit-Tracker/blob/master/screenshots/report.png)
+
 ## Deployment
 - Heroku (nodejs server)
 - MongoDB Atlas (for database)
